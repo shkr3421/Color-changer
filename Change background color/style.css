@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.boxes{
+    display: flex;
+    gap: 2rem;
+}
+.box{
+    margin-top: 50px;
+    height:200px;
+    width: 200px;
+    border: 5px solid black;
+    margin-bottom: 50px;
+}
+.box:hover{
+    cursor: pointer;
+}
+#grey{
+    background-color: grey;
+}
+#white{
+    background-color: white;
+}
+#blue{
+    background-color: blue;
+}
+#yellow{
+    background-color: yellow;
+}
