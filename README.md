@@ -133,3 +133,192 @@ Indexes remain	Indexes removed
 ---
 
 If you want, I can give only commands, MCQ-style answers, or interview cheat-sheet format next.
+
+
+
+
+Below are clean, practical MongoDB CRUD commands using MongoDB.
+You can directly run these in MongoDB shell / online compiler.
+
+
+---
+
+1. InsertOne (Practical)
+
+Insert a student
+
+db.students.insertOne({
+  name: "Shashank",
+  course: "CSE",
+  year: 2024
+})
+
+Insert an employee
+
+db.employees.insertOne({
+  name: "Rahul",
+  role: "Developer",
+  salary: 60000,
+  joiningDate: new Date()
+})
+
+Insert a product
+
+db.products.insertOne({
+  name: "Laptop",
+  price: 55000,
+  category: "Electronics"
+})
+
+
+---
+
+2. InsertMany (Practical)
+
+Insert 5 users
+
+db.users.insertMany([
+  { name: "Ali", age: 22 },
+  { name: "Riya", age: 24 },
+  { name: "Aman", age: 23 },
+  { name: "Neha", age: 21 },
+  { name: "Karan", age: 25 }
+])
+
+Insert multiple products
+
+db.products.insertMany([
+  { name: "Phone", price: 20000, category: "Electronics" },
+  { name: "Chair", price: 3000, category: "Furniture" },
+  { name: "Table", price: 7000, category: "Furniture" }
+])
+
+Insert many orders
+
+db.orders.insertMany([
+  { orderId: 101, customerName: "Ali", totalAmount: 1500 },
+  { orderId: 102, customerName: "Riya", totalAmount: 2500 },
+  { orderId: 103, customerName: "Aman", totalAmount: 1800 }
+])
+
+
+---
+
+3. UpdateOne (Practical)
+
+Update salary of one employee
+
+db.employees.updateOne(
+  { name: "Rahul" },
+  { $set: { salary: 70000 } }
+)
+
+Add status to one user
+
+db.users.updateOne(
+  { name: "Ali" },
+  { $set: { status: "Active" } }
+)
+
+Change city of one customer
+
+db.customers.updateOne(
+  { name: "Riya" },
+  { $set: { city: "Delhi" } }
+)
+
+
+---
+
+4. UpdateMany (Practical)
+
+Add updatedDate to all records
+
+db.users.updateMany(
+  {},
+  { $currentDate: { updatedDate: true } }
+)
+
+Increase price of products in a category
+
+db.products.updateMany(
+  { category: "Electronics" },
+  { $inc: { price: 2000 } }
+)
+
+Add country to all users
+
+db.users.updateMany(
+  {},
+  { $set: { country: "India" } }
+)
+
+
+---
+
+5. Add Date (Practical)
+
+Insert document with current date
+
+db.logs.insertOne({
+  action: "login",
+  date: new Date()
+})
+
+Add today’s date to all documents
+
+db.logs.updateMany(
+  {},
+  { $currentDate: { todayDate: true } }
+)
+
+Convert numeric year to date
+
+db.students.updateMany(
+  { year: { $type: "number" } },
+  [{ $set: { year: { $toDate: { $concat: [{ $toString: "$year" }, "-01-01"] } } } }]
+)
+
+
+---
+
+6. DeleteOne (Practical)
+
+Delete user named "Ali"
+
+db.users.deleteOne({ name: "Ali" })
+
+Delete one product by productId
+
+db.products.deleteOne({ productId: 101 })
+
+
+---
+
+7. DeleteMany (Practical)
+
+Delete users from a city
+
+db.users.deleteMany({ city: "Delhi" })
+
+Delete records where year < 2020
+
+db.students.deleteMany({ year: { $lt: 2020 } })
+
+
+---
+
+8. Drop Operations (Practical)
+
+Drop students collection
+
+db.students.drop()
+
+Drop current database
+
+db.dropDatabase()
+
+
+---
+
+If you want, I can give this as a one-page cheat sheet, MCQ form, or only commands without headings.
