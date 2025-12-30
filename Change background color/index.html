@@ -2,23 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Back-ground color changer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Local Storage Demo</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Color Scheme Switcher</h1>
-        <div class="boxes">
-            <div class="box" id="grey"></div>
-            <div class="box" id="white"></div>
-            <div class="box" id="blue"></div>
-            <div class="box" id="yellow"></div>
-        </div>
-        <div class="instruction">
-            <h1>Try clicking on the colors above to change the background color of this page!</h1>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
+    <h2>Local Storage Demo</h2>
+    <label>Enter Name:</label><br><br>
+    <input type="text" id="name"><br><br>
+    <button onclick="saveData()">Save to Local Storage</button>
+    <button onclick="getData()">get from Local Storage</button>
+    <button onclick="removeData()">Remove Data</button>
+    <button onclick="clearAll()">Clear All</button>
+    <p id="result"></p>
+    <script>
+    function saveData(){
+        let name =document.getElementById("name").value;
+        localStorage.setItem("username",name);
+        document.getElementById("result").innerHTML="data saved successfully!";
+    }
+    function getData(){
+        let storedName =localStorage.getItem("username");
+       
+        document.getElementById("result").innerHTML="stored name:" + storedName;
+    }
+    function removeData(){
+        localStorage.removeItem("username");
+       
+        document.getElementById("result").innerHTML="data removed";
+    }
+    function clearAll(){
+        localStorage.clear();
+       
+        document.getElementById("result").innerHTML="All Local Storage Cleared";
+    }
+    
+    </script>
+ 
+</body>  
 </html>
