@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Person Storage Example</title>
+    <title>Person Storage</title>
 </head>
 <body>
 
-    <h2>Person Details Form</h2>
+<h2>Person Form</h2>
 
+<form onsubmit="return false;">
     <label>Name:</label><br>
     <input type="text" id="name"><br><br>
 
@@ -20,51 +21,49 @@
     <label>Email:</label><br>
     <input type="email" id="email"><br><br>
 
-    <button onclick="savePerson()">Save</button>
-    <button onclick="getPerson()">Get</button>
-    <button onclick="removePerson()">Remove</button>
-    <button onclick="clearAll()">Clear All</button>
+    <button type="button" onclick="savePerson()">Save</button>
+    <button type="button" onclick="getPerson()">Get</button>
+    <button type="button" onclick="removePerson()">Remove</button>
+    <button type="button" onclick="clearAll()">Clear All</button>
+</form>
 
-    <p id="result"></p>
+<p id="result"></p>
 
-    <script>
-        function savePerson() {
-            let person = {
-                name: document.getElementById("name").value,
-                age: document.getElementById("age").value,
-                location: document.getElementById("location").value,
-                email: document.getElementById("email").value
-            };
+<script>
+function savePerson() {
+    const person = {
+        name: document.getElementById("name").value,
+        age: document.getElementById("age").value,
+        location: document.getElementById("location").value,
+        email: document.getElementById("email").value
+    };
 
-            localStorage.setItem("person", JSON.stringify(person));
-            document.getElementById("result").innerHTML = "Person data saved successfully!";
-        }
+    localStorage.setItem("person", JSON.stringify(person));
+    document.getElementById("result").innerText = "Data saved!";
+}
 
-        function getPerson() {
-            let storedPerson = localStorage.getItem("person");
+function getPerson() {
+    const data = localStorage.getItem("person");
+    if (!data) {
+        document.getElementById("result").innerText = "No data found";
+        return;
+    }
 
-            if (storedPerson) {
-                let person = JSON.parse(storedPerson);
-                document.getElementById("result").innerHTML =
-                    `Name: ${person.name}<br>
-                     Age: ${person.age}<br>
-                     Location: ${person.location}<br>
-                     Email: ${person.email}`;
-            } else {
-                document.getElementById("result").innerHTML = "No data found!";
-            }
-        }
+    const person = JSON.parse(data);
+    document.getElementById("result").innerText =
+        `Name: ${person.name}, Age: ${person.age}, Location: ${person.location}, Email: ${person.email}`;
+}
 
-        function removePerson() {
-            localStorage.removeItem("person");
-            document.getElementById("result").innerHTML = "Person data removed!";
-        }
+function removePerson() {
+    localStorage.removeItem("person");
+    document.getElementById("result").innerText = "Data removed";
+}
 
-        function clearAll() {
-            localStorage.clear();
-            document.getElementById("result").innerHTML = "All local storage cleared!";
-        }
-    </script>
+function clearAll() {
+    localStorage.clear();
+    document.getElementById("result").innerText = "All cleared";
+}
+</script>
 
 </body>
 </html>
