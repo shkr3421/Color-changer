@@ -2,40 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Local Storage Demo</title>
+    <title>Person Storage Example</title>
 </head>
 <body>
-    <h2>Local Storage Demo</h2>
-    <label>Enter Name:</label><br><br>
+
+    <h2>Person Details Form</h2>
+
+    <label>Name:</label><br>
     <input type="text" id="name"><br><br>
-    <button onclick="saveData()">Save to Local Storage</button>
-    <button onclick="getData()">get from Local Storage</button>
-    <button onclick="removeData()">Remove Data</button>
+
+    <label>Age:</label><br>
+    <input type="number" id="age"><br><br>
+
+    <label>Location:</label><br>
+    <input type="text" id="location"><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" id="email"><br><br>
+
+    <button onclick="savePerson()">Save</button>
+    <button onclick="getPerson()">Get</button>
+    <button onclick="removePerson()">Remove</button>
     <button onclick="clearAll()">Clear All</button>
+
     <p id="result"></p>
+
     <script>
-    function saveData(){
-        let name =document.getElementById("name").value;
-        localStorage.setItem("username",name);
-        document.getElementById("result").innerHTML="data saved successfully!";
-    }
-    function getData(){
-        let storedName =localStorage.getItem("username");
-       
-        document.getElementById("result").innerHTML="stored name:" + storedName;
-    }
-    function removeData(){
-        localStorage.removeItem("username");
-       
-        document.getElementById("result").innerHTML="data removed";
-    }
-    function clearAll(){
-        localStorage.clear();
-       
-        document.getElementById("result").innerHTML="All Local Storage Cleared";
-    }
-    
+        function savePerson() {
+            let person = {
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                location: document.getElementById("location").value,
+                email: document.getElementById("email").value
+            };
+
+            localStorage.setItem("person", JSON.stringify(person));
+            document.getElementById("result").innerHTML = "Person data saved successfully!";
+        }
+
+        function getPerson() {
+            let storedPerson = localStorage.getItem("person");
+
+            if (storedPerson) {
+                let person = JSON.parse(storedPerson);
+                document.getElementById("result").innerHTML =
+                    `Name: ${person.name}<br>
+                     Age: ${person.age}<br>
+                     Location: ${person.location}<br>
+                     Email: ${person.email}`;
+            } else {
+                document.getElementById("result").innerHTML = "No data found!";
+            }
+        }
+
+        function removePerson() {
+            localStorage.removeItem("person");
+            document.getElementById("result").innerHTML = "Person data removed!";
+        }
+
+        function clearAll() {
+            localStorage.clear();
+            document.getElementById("result").innerHTML = "All local storage cleared!";
+        }
     </script>
- 
-</body>  
+
+</body>
 </html>
