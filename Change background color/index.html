@@ -29,11 +29,17 @@
   <input type="text" id="language"><br><br>
 
   <button type="button" onclick="saveMovie()">Save Movie</button>
-  <button type="button" onclick="loadMovie()">Load Movie</button>
   <button type="button" onclick="clearMovie()">Clear Data</button>
 </form>
 
 <script>
+  document.getElementById("movieName").value = localStorage.getItem("movieName") || "";
+  document.getElementById("genre").value = localStorage.getItem("genre") || "";
+  document.getElementById("year").value = localStorage.getItem("year") || "";
+  document.getElementById("director").value = localStorage.getItem("director") || "";
+  document.getElementById("rating").value = localStorage.getItem("rating") || "";
+  document.getElementById("language").value = localStorage.getItem("language") || "";
+
   function saveMovie() {
     localStorage.setItem("movieName", document.getElementById("movieName").value);
     localStorage.setItem("genre", document.getElementById("genre").value);
@@ -42,15 +48,6 @@
     localStorage.setItem("rating", document.getElementById("rating").value);
     localStorage.setItem("language", document.getElementById("language").value);
     alert("Movie saved");
-  }
-
-  function loadMovie() {
-    document.getElementById("movieName").value = localStorage.getItem("movieName") || "";
-    document.getElementById("genre").value = localStorage.getItem("genre") || "";
-    document.getElementById("year").value = localStorage.getItem("year") || "";
-    document.getElementById("director").value = localStorage.getItem("director") || "";
-    document.getElementById("rating").value = localStorage.getItem("rating") || "";
-    document.getElementById("language").value = localStorage.getItem("language") || "";
   }
 
   function clearMovie() {
