@@ -1,68 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Person Storage</title>
+  <meta charset="UTF-8">
+  <title>Local Storage Form Demo</title>
 </head>
+
 <body>
 
-<h2>Person Form</h2>
+<h2>User Information Form</h2>
 
-<form onsubmit="return false;">
-    <label>Name:</label><br>
-    <input type="text" id="name"><br><br>
+<form id="userForm">
+  <label>Name:</label><br>
+  <input type="text" id="name" required><br><br>
 
-    <label>Age:</label><br>
-    <input type="number" id="age"><br><br>
+  <label>Age:</label><br>
+  <input type="number" id="age"><br><br>
 
-    <label>Location:</label><br>
-    <input type="text" id="location"><br><br>
+  <label>Email:</label><br>
+  <input type="email" id="email"><br><br>
 
-    <label>Email:</label><br>
-    <input type="email" id="email"><br><br>
+  <label>City:</label><br>
+  <input type="text" id="city"><br><br>
 
-    <button type="button" onclick="savePerson()">Save</button>
-    <button type="button" onclick="getPerson()">Get</button>
-    <button type="button" onclick="removePerson()">Remove</button>
-    <button type="button" onclick="clearAll()">Clear All</button>
+  <label>Phone:</label><br>
+  <input type="tel" id="phone"><br><br>
+
+  <label>Gender:</label><br>
+  <select id="gender">
+    <option value="">Select</option>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+  </select><br><br>
+
+  <button type="submit">Save to Local Storage</button>
+  <button type="button" onclick="clearData()">Clear Stored Data</button>
 </form>
 
-<p id="result"></p>
-
 <script>
-function savePerson() {
-    const person = {
-        name: document.getElementById("name").value,
-        age: document.getElementById("age").value,
-        location: document.getElementById("location").value,
-        email: document.getElementById("email").value
+  
+  const storedUser = localStorage.getItem("userData");
+
+  if (storedUser) {
+    const user = JSON.parse(storedUser);
+    document.getElementById("name").value = user.name || "";
+    document.getElementById("age").value = user.age || "";
+    document.getElementById("email").value = user.email || "";
+    document.getElementById("city").value = user.city || "";
+    document.getElementById("phone").value = user.phone || "";
+    document.getElementById("gender").value = user.gender || "";
+  }
+
+  document.getElementById("userForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // stop page refresh
+
+    const userData = {
+      name: document.getElementById("name").value,
+      age: document.getElementById("age").value,
+      email: document.getElementById("email").value,
+      city: document.getElementById("city").value,
+      phone: document.getElementById("phone").value,
+      gender: document.getElementById("gender").value
     };
 
-    localStorage.setItem("person", JSON.stringify(person));
-    document.getElementById("result").innerText = "Data saved!";
-}
+    localStorage.setItem("userData", JSON.stringify(userData));
+    alert("Data saved successfully!");
+  });
 
-function getPerson() {
-    const data = localStorage.getItem("person");
-    if (!data) {
-        document.getElementById("result").innerText = "No data found";
-        return;
-    }
-
-    const person = JSON.parse(data);
-    document.getElementById("result").innerText =
-        `Name: ${person.name}, Age: ${person.age}, Location: ${person.location}, Email: ${person.email}`;
-}
-
-function removePerson() {
-    localStorage.removeItem("person");
-    document.getElementById("result").innerText = "Data removed";
-}
-
-function clearAll() {
-    localStorage.clear();
-    document.getElementById("result").innerText = "All cleared";
-}
+  function clearData() {
+    localStorage.removeItem("userData");
+    document.getElementById("userForm").reset();
+    alert("Local Storage cleared!");
+  }
 </script>
 
 </body>
