@@ -9,9 +9,9 @@
 
 <h2>Movie Details Form</h2>
 
-<form id="movieForm">
+<form>
   <label>Movie Name:</label><br>
-  <input type="text" id="movieName" required><br><br>
+  <input type="text" id="movieName"><br><br>
 
   <label>Genre:</label><br>
   <input type="text" id="genre"><br><br>
@@ -23,32 +23,19 @@
   <input type="text" id="director"><br><br>
 
   <label>Rating:</label><br>
-  <input type="number" id="rating" step="0.1" min="0" max="10"><br><br>
+  <input type="number" id="rating"><br><br>
 
   <label>Language:</label><br>
   <input type="text" id="language"><br><br>
 
-  <button type="submit">Save Movie</button>
-  <button type="button" onclick="clearData()">Clear Data</button>
+  <button type="button" onclick="saveMovie()">Save Movie</button>
+  <button type="button" onclick="loadMovie()">Load Movie</button>
+  <button type="button" onclick="clearMovie()">Clear Data</button>
 </form>
 
 <script>
-  const storedMovie = localStorage.getItem("movieData");
-
-  if (storedMovie) {
-    const movie = JSON.parse(storedMovie);
-    document.getElementById("movieName").value = movie.movieName || "";
-    document.getElementById("genre").value = movie.genre || "";
-    document.getElementById("year").value = movie.year || "";
-    document.getElementById("director").value = movie.director || "";
-    document.getElementById("rating").value = movie.rating || "";
-    document.getElementById("language").value = movie.language || "";
-  }
-
-  document.getElementById("movieForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const movieData = {
+  function saveMovie() {
+    var movie = {
       movieName: document.getElementById("movieName").value,
       genre: document.getElementById("genre").value,
       year: document.getElementById("year").value,
@@ -57,13 +44,26 @@
       language: document.getElementById("language").value
     };
 
-    localStorage.setItem("movieData", JSON.stringify(movieData));
-    alert("Movie data saved");
-  });
+    localStorage.setItem("movieData", JSON.stringify(movie));
+    alert("Movie saved");
+  }
 
-  function clearData() {
+  function loadMovie() {
+    var data = localStorage.getItem("movieData");
+    if (data) {
+      var movie = eval("(" + data + ")");
+      document.getElementById("movieName").value = movie.movieName;
+      document.getElementById("genre").value = movie.genre;
+      document.getElementById("year").value = movie.year;
+      document.getElementById("director").value = movie.director;
+      document.getElementById("rating").value = movie.rating;
+      document.getElementById("language").value = movie.language;
+    }
+  }
+
+  function clearMovie() {
     localStorage.removeItem("movieData");
-    document.getElementById("movieForm").reset();
+    document.forms[0].reset();
     alert("Data cleared");
   }
 </script>
