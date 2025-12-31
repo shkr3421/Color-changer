@@ -2,75 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Local Storage Form Demo</title>
+  <title>Movie Local Storage Demo</title>
 </head>
 
 <body>
 
-<h2>User Information Form</h2>
+<h2>Movie Details Form</h2>
 
-<form id="userForm">
-  <label>Name:</label><br>
-  <input type="text" id="name" required><br><br>
+<form id="movieForm">
+  <label>Movie Name:</label><br>
+  <input type="text" id="movieName" required><br><br>
 
-  <label>Age:</label><br>
-  <input type="number" id="age"><br><br>
+  <label>Genre:</label><br>
+  <input type="text" id="genre"><br><br>
 
-  <label>Email:</label><br>
-  <input type="email" id="email"><br><br>
+  <label>Release Year:</label><br>
+  <input type="number" id="year"><br><br>
 
-  <label>City:</label><br>
-  <input type="text" id="city"><br><br>
+  <label>Director:</label><br>
+  <input type="text" id="director"><br><br>
 
-  <label>Phone:</label><br>
-  <input type="tel" id="phone"><br><br>
+  <label>Rating:</label><br>
+  <input type="number" id="rating" step="0.1" min="0" max="10"><br><br>
 
-  <label>Gender:</label><br>
-  <select id="gender">
-    <option value="">Select</option>
-    <option>Male</option>
-    <option>Female</option>
-    <option>Other</option>
-  </select><br><br>
+  <label>Language:</label><br>
+  <input type="text" id="language"><br><br>
 
-  <button type="submit">Save to Local Storage</button>
-  <button type="button" onclick="clearData()">Clear Stored Data</button>
+  <button type="submit">Save Movie</button>
+  <button type="button" onclick="clearData()">Clear Data</button>
 </form>
 
 <script>
-  
-  const storedUser = localStorage.getItem("userData");
+  const storedMovie = localStorage.getItem("movieData");
 
-  if (storedUser) {
-    const user = JSON.parse(storedUser);
-    document.getElementById("name").value = user.name || "";
-    document.getElementById("age").value = user.age || "";
-    document.getElementById("email").value = user.email || "";
-    document.getElementById("city").value = user.city || "";
-    document.getElementById("phone").value = user.phone || "";
-    document.getElementById("gender").value = user.gender || "";
+  if (storedMovie) {
+    const movie = JSON.parse(storedMovie);
+    document.getElementById("movieName").value = movie.movieName || "";
+    document.getElementById("genre").value = movie.genre || "";
+    document.getElementById("year").value = movie.year || "";
+    document.getElementById("director").value = movie.director || "";
+    document.getElementById("rating").value = movie.rating || "";
+    document.getElementById("language").value = movie.language || "";
   }
 
-  document.getElementById("userForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // stop page refresh
+  document.getElementById("movieForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    const userData = {
-      name: document.getElementById("name").value,
-      age: document.getElementById("age").value,
-      email: document.getElementById("email").value,
-      city: document.getElementById("city").value,
-      phone: document.getElementById("phone").value,
-      gender: document.getElementById("gender").value
+    const movieData = {
+      movieName: document.getElementById("movieName").value,
+      genre: document.getElementById("genre").value,
+      year: document.getElementById("year").value,
+      director: document.getElementById("director").value,
+      rating: document.getElementById("rating").value,
+      language: document.getElementById("language").value
     };
 
-    localStorage.setItem("userData", JSON.stringify(userData));
-    alert("Data saved successfully!");
+    localStorage.setItem("movieData", JSON.stringify(movieData));
+    alert("Movie data saved");
   });
 
   function clearData() {
-    localStorage.removeItem("userData");
-    document.getElementById("userForm").reset();
-    alert("Local Storage cleared!");
+    localStorage.removeItem("movieData");
+    document.getElementById("movieForm").reset();
+    alert("Data cleared");
   }
 </script>
 
