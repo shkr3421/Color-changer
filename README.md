@@ -1,155 +1,45 @@
-1. Online Shopping Discount
-
-    amount = int(input("Enter total amount: "))
-
-if amount >= 5000:
-    discount = 0.20
-elif amount >= 3000:
-    discount = 0.10
-else:
-    discount = 0
-
-final_amount = amount - (amount * discount)
-print("Payable Amount:", final_amount)
+1. orders[customer_id][item] = new_price
 
 
-Explanation:
-elif checks the next condition only if the previous one is false, ensuring only one discount is applied.
-
-2. Traffic Signal System
-
-signal = input("Enter signal color: ").upper()
-
-if signal == "RED":
-    print("Stop")
-elif signal == "YELLOW":
-    print("Get Ready")
-elif signal == "GREEN":
-    print("Go")
-else:
-    print("Invalid Signal")
+2. orders[customer_id][new_item] = price
 
 
-Explanation:
-elif is used to compare multiple possible values of a single variable.
+3. {k: v * 1.10 for k, v in order.items()}
 
 
-3.Electricity Bill Calculation
-
-units = int(input("Enter units consumed: "))
-
-if units <= 100:
-    bill = units * 1.5
-elif units <= 200:
-    bill = (100 * 1.5) + (units - 100) * 2.5
-else:
-    bill = (100 * 1.5) + (100 * 2.5) + (units - 200) * 4.0
-
-print("Electricity Bill: ₹", bill)
-
-Explanation:
-Slab-wise calculation is best handled using elif to avoid overlapping conditions.
+4. sum(order.values())
 
 
-4. Student Result Processing
-marks = int(input("Enter marks: "))
-
-if marks >= 90:
-    print("Excellent")
-elif marks >= 75:
-    print("Very Good")
-elif marks >= 60:
-    print("Good")
-elif marks >= 40:
-    print("Pass")
-else:
-    print("Fail")
+5. order.pop(item_name)
 
 
-Explanation:
-Conditions are checked from highest to lowest to assign the correct grade.
+6. order.update(other_dict)
 
 
-5. Bank Account Status
-
-balance = int(input("Enter account balance: "))
-
-if balance >= 100000:
-    print("Premium")
-elif balance >= 25000:
-    print("Gold")
-elif balance >= 5000:
-    print("Silver")
-else:
-    print("Regular")
+7. order.get(item_name, 0)
 
 
-Explanation:
-Ordering conditions correctly avoids incorrect category assignment.
+8. 'Pizza' in order
 
 
-6. Whitespace & Readability
-Original
-x=10+5*2
-
-Improved
-x = 10 + 5 * 2
+9. order[item] = price
 
 
-Explanation:
-Proper spacing improves readability and follows Python’s style guidelines (PEP 8).
+10. for customer, order in orders.items(): print(sum(order.values()))
 
 
-7. Indentation Error Analysis
-Incorrect Code
-
-if x > 5:
-print("Greater")
-
-What happens:
-IndentationError because Python requires indented blocks after if.
-Correct Code
-
-if x > 5:
-    print("Greater")
+11. order.popitem()
 
 
-8. String vs Math Expression
-print("2 + 3 * 4")
-print(2 + 3 * 4)
+12. Last inserted item, because dictionaries are insertion-ordered
 
-Output Difference
-"2 + 3 * 4" → printed as text
-2 + 3 * 4 → evaluated as math → 14
-Explanation:
-Strings are not evaluated as mathematical expressions.
-9. Evaluating String Math Expression
-expr = "10 + 5 * 2"
 
-a) Value stored → "10 + 5 * 2"
-b) To evaluate:
-Copy code
-Python
-result = eval(expr)
-c) Be careful because eval() can execute malicious code if input is untrusted.
-10. Indentation with elif
-Incorrect Code
-Copy code
-Python
-if marks >= 60:
-    print("Pass")
-elif marks >= 40:
-print("Conditional Pass")
-else:
-    print("Fail")
-Correct Code
-Copy code
-Python
-if marks >= 60:
-    print("Pass")
-elif marks >= 40:
-    print("Conditional Pass")
-else:
-    print("Fail")
-Explanation:
-Each elif block must be aligned with if. Incorrect indentation breaks logical flow and causes errors.
+13. order[wrong_item] = correct_price
+
+
+14. order.update(new_items)
+
+
+15. order.clear() → dictionary becomes empty
+
+
