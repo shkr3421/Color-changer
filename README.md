@@ -1,12 +1,24 @@
-Dear Payroll Team,
+PROJECT 1 – Smart Retail Order Management System
+(Team A)
+Real-world context
+Used by a small retail store to manage products, customer orders, and billing through a console application.
 
-I hope you are doing well.
+ What the project actually does
+Maintains a product catalog
+Accepts customer orders
+Validates stock
+Calculates bill
+Saves orders to files
 
-I am unable to log in to my Laysquare account associated with the Volkswagen payroll system. Despite entering the correct credentials, I am facing login issues and cannot access my account.
-
-Kindly help me resolve this issue at the earliest or let me know if any action is required from my side.
-
-Thank you for your support.
-
-Regards,
-Shashank Kumar
+Topics Applied (Naturally)
+Python basics → menu-driven app
+Variables & built-ins → print, input, len, type
+Strings & numbers → product names, prices
+Lists & tuples → product list
+Dictionaries → product catalog & orders
+Comprehensions → filter low-stock items
+Flow control & loops → order processing
+Exception handling → invalid quantity, out-of-stock
+Functions → billing, stock update
+Files & CSV → store daily sales
+Modules & packages → product.py, order.py
