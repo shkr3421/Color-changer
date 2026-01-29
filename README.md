@@ -1,13 +1,12 @@
 Hi [Name],
 
-I hope you’re doing well.
+I hope you are doing well.
 
-I’m writing to follow up regarding my attendance for 6 January, which is currently marked as absent. I had reached out earlier on Teams as well, but I understand you may have been busy.
+I would like to inform you that my attendance for **6 January** has been marked as absent. I was present on that day and attended the session as scheduled.
 
-I was present on that day, and I wanted to request your guidance on how this can be rectified. You may also confirm my presence with the trainer if required.
-If this needs to be handled by a different team or point of contact, kindly let me know so I can reach out accordingly.
+I request your guidance on how this can be corrected. If required, the same can also be verified with the trainer. Please let me know if I should reach out to any other team or point of contact for this correction.
 
-Thank you for your time and support.
+Thank you for your support.
 
 Regards,
 Shashank Kumar
