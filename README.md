@@ -1,15 +1,9 @@
-
-<h2>Razor view</h2>
- 
 @{
-        var Total = 500;
+    var myfilepath = @"C:\Myfolder\";
  
 }
-<p>The value of your account is:@Total</p>
-<p>Today's Date and Time:@DateTime.Now</p>
+<p>My file path is:@myfilepath</p>
 @{
-    var greeting = "Welcome to Razor view"; 
-    var weekday = DateTime.Now.DayOfWeek;
-    var greetingmesage = greeting + "Today is : " + weekday;
+    var myquote = @"The person said : ""Hello World""";
 }
-<p>@greetingmesage</p>
+<p>@myquote</p>
