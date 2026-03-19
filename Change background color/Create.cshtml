@@ -1,0 +1,26 @@
+﻿@model ADODemo.Models.Product
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<h1>Create Product</h1>
+<form asp-action="Create" method="post">
+    <div>
+        <label>Product Name</label>
+        <input asp-for="ProdName" class="form-control" />
+    </div>
+    <div>
+        <label>Product Price</label>
+        <input asp-for="ProdPrice" class="form-control" />
+    </div>
+    <div>
+        <label>Product Quantity</label>
+        <input asp-for="ProdQty" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit">Save</button>
+    <a asp-action="Index">Back to List</a>
+</form>
