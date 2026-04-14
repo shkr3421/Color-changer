@@ -1,14 +1,11 @@
-Hi Giri,
+Dear All,
 
-Thank you for reaching out regarding this opportunity.
+I hope you are doing well.
 
-I am currently working as a trainee at Volkswagen and have a strong inclination towards backend development. I have hands-on experience with Spring Boot, where I’ve built REST APIs, handled business logic, and worked with databases for data processing.
+Please find my updated resume attached for your review, as requested. I look forward to the upcoming technical interview and project allocation.
 
-I am particularly interested in contributing to backend components such as API development, service architecture, and data handling, and would prefer working in areas aligned with these.
-
-Please let me know more about the project scope and how I can contribute from a backend perspective.
-
-Looking forward to your response.
+Please let me know if any additional information is required.
 
 Best regards,
 Shashank Kumar
+[Shashank Kumar__Updated Resume.pdf](https://github.com/user-attachments/files/26697818/Shashank.Kumar__Updated.Resume.pdf)
