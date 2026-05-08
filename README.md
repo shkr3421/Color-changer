@@ -1,8 +1,6 @@
-Hi [Name],
+Hi Nikhil,
 
-I wanted to check if I can get access to Udemy for learning Angular as part of my current project requirements.
+I received the onboarding mail for the Scania IT – Managed Service Consultant project. Since Kushal is currently on leave, could you please guide me regarding the next onboarding steps whenever you’re available?
 
-If you are not the right person to help with this, kindly let me know whom I should reach out to.
-
-Thanks & Regards,  
+Thanks,
 Shashank
